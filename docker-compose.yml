@@ -5,9 +5,10 @@ services:
     container_name: backend
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=host.docker.internal\SQLEXPRESS;Database=HotelBookingDB;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=True;
+      - ASPNETCORE_URLS=http://+:5259
+      - ConnectionStrings__DefaultConnection=Server=host.docker.internal,1433;Database=HotelBookingDB;User ID=Admin;Password=1505;TrustServerCertificate=True;MultipleActiveResultSets=True;
     ports:
-      - "5000:5000"
+      - "5259:5259"
 
   frontend:
     build:
@@ -17,3 +18,5 @@ services:
       - "3000:80"
     depends_on:
       - backend
+    env_file:
+      - ./HotelBookUP-frontend/HotelBookUP-frontend/.env 
