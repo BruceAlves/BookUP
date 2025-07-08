@@ -18,5 +18,8 @@ services:
       - "3000:80"
     depends_on:
       - backend
-    env_file:
-      - ./HotelBookUP-frontend/HotelBookUP-frontend/.env 
+    environment:
+      - VITE_AWS_BUCKET_NAME
+      - VITE_AWS_REGION
+      - VITE_AWS_ACCESS_KEY_ID
+      - VITE_AWS_SECRET_ACCESS_KEY
