@@ -13,7 +13,7 @@ export async function listarImagens(prefix: string): Promise<string[]> {
         }));
 
         return (data.Contents as _Object[])
-            ?.filter((obj) => obj.Key && /\.(jpg|jpeg|png|webp|avif)$/i.test(obj.Key)) // só imagens
+            ?.filter((obj) => obj.Key && /\.(jpg|jpeg|png|webp|avif)$/i.test(obj.Key))
             .map((obj) => `https://${BUCKET_NAME}.s3.amazonaws.com/${obj.Key}`) || [];
 
     } catch (err) {
