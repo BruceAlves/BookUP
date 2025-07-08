@@ -1,13 +1,11 @@
-name: CI - Build Docker Compose on PR to Master
-
-on:
-  pull_request:
-    branches: [master]
-    types: [opened, synchronize, reopened]
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VITE_AWS_BUCKET_NAME: ${{ secrets.VITE_AWS_BUCKET_NAME }}
+      VITE_AWS_REGION: ${{ secrets.VITE_AWS_REGION }}
+      VITE_AWS_ACCESS_KEY_ID: ${{ secrets.VITE_AWS_ACCESS_KEY_ID }}
+      VITE_AWS_SECRET_ACCESS_KEY: ${{ secrets.VITE_AWS_SECRET_ACCESS_KEY }}
 
     steps:
       - name: 📥 Checkout repositório
