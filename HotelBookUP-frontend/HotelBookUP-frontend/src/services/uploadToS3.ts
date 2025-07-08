@@ -2,10 +2,11 @@ import { ListObjectsV2Command, _Object } from "@aws-sdk/client-s3";
 import { s3Client } from "./s3Config";
 
 const BUCKET_NAME = import.meta.env.VITE_AWS_BUCKET_NAME;
-console.log("BUCKET_NAME:", BUCKET_NAME);
 
 export async function listarImagens(prefix: string): Promise<string[]> {
     try {
+        console.log("Bucket:", BUCKET_NAME);
+
         const data = await s3Client.send(new ListObjectsV2Command({
             Bucket: BUCKET_NAME,
             Prefix: prefix,
