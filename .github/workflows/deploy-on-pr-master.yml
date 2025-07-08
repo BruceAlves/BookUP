@@ -1,0 +1,33 @@
+name: CI - Build Docker Compose on PR to Master
+
+on:
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repositório
+        uses: actions/checkout@v3
+
+      - name: 🐳 Instalar Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker-compose -y
+
+      - name: 🧪 Subir containers para teste
+        run: |
+          docker-compose up -d --build
+          docker-compose ps
+
+      - name: ✅ Testar se containers em execução
+        run: |
+          docker ps
+          curl -f http://localhost:5259/swagger/index.html || exit 1
+
+      - name: 🧹 Derrubar containers após teste
+        if: always()
+        run: docker-compose down
