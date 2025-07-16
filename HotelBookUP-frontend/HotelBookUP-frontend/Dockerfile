@@ -2,11 +2,14 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
+
+# Instala dependências
 RUN npm install
 
-COPY . .
+# Corrige o esbuild para a versão esperada (force = substitui o binário corrompido ou errado)
+RUN npm install esbuild@0.25.5 --force
 
-RUN npm install esbuild --force
+COPY . .
 
 RUN npm run build
 

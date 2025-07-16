@@ -1,4 +1,24 @@
+version: '3.9'
+
 services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    environment:
+      DB_PASSWORD: "1505"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "14333:1433"
+    healthcheck:
+      test: ["CMD-SHELL", "exit 0"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    env_file:
+      - ./HotelBookUP-frontend/HotelBookUP-frontend/.env
+
   backend:
     build:
       context: ./HotelBookUP-Back-End
@@ -6,9 +26,14 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5259
-      - ConnectionStrings__DefaultConnection=Server=host.docker.internal,1433;Database=HotelBookingDB;User ID=Admin;Password=1505;TrustServerCertificate=True;MultipleActiveResultSets=True;
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=HotelBookingDB;User ID=Admin;Password=1505;TrustServerCertificate=True;MultipleActiveResultSets=True;
     ports:
       - "5259:5259"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    env_file:
+      - ./HotelBookUP-frontend/HotelBookUP-frontend/.env
 
   frontend:
     build:
@@ -23,3 +48,5 @@ services:
       - VITE_AWS_REGION
       - VITE_AWS_ACCESS_KEY_ID
       - VITE_AWS_SECRET_ACCESS_KEY
+    env_file:
+      - ./HotelBookUP-frontend/HotelBookUP-frontend/.env
