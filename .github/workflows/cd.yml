@@ -1,0 +1,26 @@
+name: CD Deploy to Production
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repositório
+        uses: actions/checkout@v3
+
+      - name: 🔧 Instalar Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker-compose -y
+
+      - name: 🚀 Subir containers em produção
+        run: |
+          docker-compose up -d --build
+
+      - name: ✅ Verificar se está no ar
+        run: |
+          curl -f http://localhost:5259/swagger/index.html || exit 1
