@@ -34,7 +34,6 @@ const Payment: React.FC = () => {
 
     const handleFinalizarPagamento = () => {
         console.log('Pagamento finalizado com sucesso!');
-        console.log('Detalhes do pagamento:', cartaoInfo);
     };
 
     const getCartaoClass = () => {

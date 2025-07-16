@@ -18,7 +18,6 @@ const Login: React.FC = () => {
         try {
 
             const data = await loginUser('', email, password);
-            console.log('Tela de login:', data);
 
             if (data && data.token) {
                 localStorage.setItem('token', data.token);
