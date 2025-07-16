@@ -29,11 +29,10 @@ export const loginUser = async (Username: string, email: string, password: strin
     }
 
     const responseData = await response.json();
-    console.log('Dados retornados:', responseData);
+
 
     return responseData;
   } catch (error) {
-    console.error('Erro ao fazer login:', error);
     throw error;
   }
 };
@@ -53,7 +52,6 @@ export const listarHoteis = async () => {
     }
 
     const hoteisData = await response.json();
-    console.log('Dados dos hotéis:', hoteisData);
 
     return hoteisData;
   } catch (error) {
@@ -77,7 +75,7 @@ export const listarVoos = async () => {
     }
 
     const hoteisData = await response.json();
-    console.log('Dados dos Voos:', hoteisData);
+
 
     return hoteisData;
   } catch (error) {
@@ -100,7 +98,6 @@ export const listarCars = async () => {
     }
 
     const hoteisData = await response.json();
-    console.log('Dados dos Cars:', hoteisData);
 
     return hoteisData;
   } catch (error) {
@@ -123,7 +120,6 @@ export const listarTravelPackages = async () => {
     }
 
     const hoteisData = await response.json();
-    console.log('Dados dos TravelPackages:', hoteisData);
 
     return hoteisData;
   } catch (error) {
@@ -147,7 +143,6 @@ export const listarFlightOffer = async () => {
     }
 
     const hoteisData = await response.json();
-    console.log('Dados dos Flight Offer:', hoteisData);
 
     return hoteisData;
   } catch (error) {
@@ -170,7 +165,6 @@ export const listarAccomodationOffer = async () => {
     }
 
     const hoteisData = await response.json();
-    console.log('Dados dos Accommodation Offer:', hoteisData);
 
     return hoteisData;
   } catch (error) {
@@ -193,7 +187,6 @@ export const listarCarsOffer = async () => {
     }
 
     const hoteisData = await response.json();
-    console.log('Dados dos Cars Offer:', hoteisData);
 
     return hoteisData;
   } catch (error) {
@@ -216,7 +209,6 @@ export const listarTravelPackagesOffer = async () => {
     }
 
     const hoteisData = await response.json();
-    console.log('Dados dos TravelPackages Offer:', hoteisData);
 
     return hoteisData;
   } catch (error) {

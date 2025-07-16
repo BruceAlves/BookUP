@@ -5,7 +5,6 @@ const BUCKET_NAME = import.meta.env.VITE_AWS_BUCKET_NAME;
 
 export async function listarImagens(prefix: string): Promise<string[]> {
     try {
-        console.log("Bucket:", BUCKET_NAME);
 
         const data = await s3Client.send(new ListObjectsV2Command({
             Bucket: BUCKET_NAME,

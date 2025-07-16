@@ -4,16 +4,15 @@ import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 interface PrivateRouteProps {
-    children: React.ReactNode; 
+    children: React.ReactNode;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-    const token = useSelector((state: any) => state.user.token); 
-    console.log('Token da Redux:', token); 
+    const token = useSelector((state: any) => state.user.token);
     if (!token) {
         return <Navigate to="/" replace />;
     }
-    return <>{children}</>; 
+    return <>{children}</>;
 };
 
 export default PrivateRoute;
