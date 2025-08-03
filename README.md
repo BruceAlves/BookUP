@@ -17,6 +17,7 @@ Book Up é uma aplicação moderna construída com .NET 8 e React TypeScript, vo
 - Mediator Pattern (com MediatR)
 - Docker & Docker Compose
 - AWS S3 (armazenamento de imgs)
+- CI/CD com GitHub Actions** ✅
 
 ### Frontend (React + TypeScript)
 - Vite
@@ -25,6 +26,7 @@ Book Up é uma aplicação moderna construída com .NET 8 e React TypeScript, vo
 - HTTP State Management
 - Componentização com boas práticas
 - Integração com autenticação JWT
+- CI/CD com GitHub Actions** ✅
 
 ---
 
