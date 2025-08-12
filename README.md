@@ -1,4 +1,4 @@
-# 📚 Book Up
+# 📚 BookUp
 
 BookUp é uma aplicação moderna construída com .NET 8 e React TypeScript, voltada para gerenciamento e reserva de vôos, quartos, aluguel de carros. A arquitetura foi pensada para escalabilidade, desempenho e organização de código, utilizando os principais padrões e boas práticas do mercado.
 
